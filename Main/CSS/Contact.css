@@ -1,0 +1,41 @@
+/* Main Container */
+.container {
+    width: 100%;
+    max-width:  1200px;
+    margin: 0 auto;
+}
+
+/*  Contatcs Section */
+#Contact {
+    background-color: #ffffff; /* Light gray background */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Grouping shared styles for the image-text container */
+.image-text-container {
+    display: flex; /* Use flexbox to align items side by side */
+    align-items: center; /* Vertically center the text with the image */
+    margin-bottom: 20px; /* Space between image-text pairs */
+}
+
+/* Styling for all images in the contact section */
+#Contact img {
+    width: 10%;             /* Ensure the image fills the container width */
+    border-radius: 8px;
+    float: left;           /* Align the image to the left */
+    margin-right:20px;    /* Add space between the image and text */
+    margin-bottom:20px;
+}
+/* Custom border for diffrent Logos so the border matches the Logo */
+#Discord-logo {border: 5px solid rgb(47, 3, 245)}
+#Git-hub-Logo {border: 5px solid black}
+
+#Contact p {
+    margin: 0;             /* Remove default margins from the paragraph */
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+
+
