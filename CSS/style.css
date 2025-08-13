@@ -1,0 +1,93 @@
+:root {
+  --bg: #18191f;
+  --boxS:
+    2px 2px 3px #00000080,
+    10px 5px 12px #00000080,
+    2px 2px 10px #00000080,
+    2px 2px 3px #00000080;
+    
+      /* GitHub exact brand colors */
+  --github-purple: #6e5494;
+  --github-dark-purple: #2a2038;
+  
+  /* Discord exact brand colors */
+  --discord-blurple: #5865F2;
+  --discord-blue: #0e21f5;
+  
+  /* Glow effects */
+  --github-glow: 
+    0 0 50px var(--github-dark-purple),
+    0 0 100px var(--github-purple);
+  --discord-glow: 
+    0 0 50px var(--discord-blurple),
+    0 0 100px var(--discord-blue);
+}
+/* ======================================================================================= */
+
+.container {  
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px; 
+  align-items: center;
+  padding: 20px;
+  min-height: 5vw;
+}
+
+.icon {
+  padding: 25px;
+  font-size: 64px;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  background-color: var(--bg);
+  box-shadow: var(--boxS);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.icon-link {
+  display: inline-flex; /* Better for icon+text alignment */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+#github {
+  text-shadow: var(--github-glow);
+  animation: pulse 2s infinite;
+  box-shadow: 
+    var(--boxS), /* Base shadows */
+    10px 5px 12px var(--github-purple); /* GitHub-specific shadow */
+;
+}
+
+#discord {
+  text-shadow: var(--discord-glow);
+  animation: pulse 2s infinite;
+  box-shadow: 
+    var(--boxS), /* Base shadows */
+    10px 5px 12px var(--discord-blurple); /* Discord-specific shadow */
+;
+}
+
+/* Perfect color matching */
+#github:hover {
+  box-shadow: 
+    var(--boxS),
+    0 0 30px var(--github-purple);
+}
+
+#discord:hover {
+  box-shadow: 
+    var(--boxS),
+    0 0 30px var(--discord-blue);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; text-shadow: 0 0 70px currentColor,
+  0 0 120px currentColor; }
+}

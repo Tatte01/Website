@@ -2,7 +2,9 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif; /* Ensures a clean font */
+    background-color: #18191f;
 }
+
 
 div {
     width: 50%;
@@ -47,11 +49,14 @@ p {
     padding-left: 25px;
 }
 
-img {
+.img-project {
     margin-right: 8px;
     /* margin: auto; */
     width: 49%;
     border-radius: 10px;
     border: 2px solid black;
 
+}
+.img-project:hover {
+  scale: 1.1;
 }
