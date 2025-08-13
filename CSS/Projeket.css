@@ -1,0 +1,57 @@
+/* Reset default margins for consistency */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif; /* Ensures a clean font */
+}
+
+div {
+    width: 50%;
+    margin: 20px auto;       
+    padding: 20px;           
+    border: 6px solid black;
+    border-radius: 16px;
+    box-sizing: border-box; 
+    background-color: rgb(165, 164, 164);
+}
+
+h1 {
+    text-align: center;       
+    font-size: 2.5rem;
+    color: red;
+    padding: 20px 0 0px 0;  
+    margin: 0 auto;         
+    width: fit-content;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;     
+}
+
+h2 {
+    text-align: center;
+    padding: 25px 0;        
+    margin: 0;
+}
+
+h3 {
+    text-align: center;
+    padding: 25px 0;        
+    margin: 0;
+    text-decoration: underline;
+    text-decoration-thickness: 2px ;
+}
+
+p {
+    text-align: left;
+    margin: 10px 0;          
+    font-size: 1.15rem;       
+    line-height: 1.4;  
+    padding-left: 25px;
+}
+
+img {
+    margin-right: 8px;
+    /* margin: auto; */
+    width: 49%;
+    border-radius: 10px;
+    border: 2px solid black;
+
+}

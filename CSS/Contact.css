@@ -7,9 +7,13 @@
 
 /*  Contatcs Section */
 #Contact {
-    background-color: #ffffff; /* Light gray background */
-    padding: 20px;
-    text-align: center;
+    width: 50%;
+    margin: 20px auto;       
+    padding: 20px;           
+    border: 6px solid black;
+    border-radius: 16px;
+    box-sizing: border-box; 
+    background-color: rgb(165, 164, 164);
 }
 
 /* Grouping shared styles for the image-text container */
