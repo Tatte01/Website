@@ -9,38 +9,13 @@
     <link rel="stylesheet" href="/CSS/Version.css">
     <link rel="stylesheet" href="/CSS/Body.css">
     
-    <!-- SINGLE GoatCounter Script (No Duplicates) -->
+    <!-- SINGLE GoatCounter Script -->
     <script data-goatcounter="https://tatte01.goatcounter.com/count" 
             src="//gc.zgo.at/count.js" async></script>
-
-    <!-- Debug Script - Fixed to work with your structure -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                if (window.goatcounter) {
-                    window.goatcounter.count({
-                        onload: function(data) {
-                            console.log("GoatCounter loaded! Current count:", data.count);
-                            // Update both the custom element and your div for redundancy
-                            const counterElement = document.querySelector("goat-counter-show");
-                            if (counterElement) {
-                                counterElement.textContent = `Total Visitors: ${data.count}`;
-                            }
-                            document.getElementById("counter").textContent = `Total Visitors: ${data.count}`;
-                        }
-                    });
-                } else {
-                    console.error("GoatCounter script failed to load!");
-                    // Fallback: Show static text if GoatCounter fails
-                    document.getElementById("counter").textContent = "Total Visitors: (Loading...)";
-                }
-            }, 2000);
-        });
-    </script>
 </head>
 <body>
     <header>
-        <a href="/HTML/index.html" class="logo active">Malte Eriksson</a>
+        <a href="/index.html" class="logo active">Malte Eriksson</a>
         <nav>
             <ul class="nav-links">
                 <li><a href="/index.html" class="active">Home</a></li>
@@ -53,7 +28,7 @@
 
     <main>
         <section id="Index"></section>
-        <!-- Counter Section -->
+        <!-- Simplified Counter - Let GoatCounter handle everything -->
         <div id="counter" style="font-style: italic; font-weight: bold;">
             <goat-counter-show data-text="Total Visitors: {count}"></goat-counter-show>
         </div>
@@ -61,7 +36,15 @@
 
     <p class="Version">Version 0.0.5</p>
     
-    <!-- Move VisitorCounter.js to end of body if not using defer -->
     <script src="/Java-Script/VisitorCounter.js"></script>
+    
+    <!-- Minimal debug script -->
+    <script>
+        window.goatcounter = window.goatcounter || {
+            callback: function(e) {
+                console.log('GoatCounter updated:', e);
+            }
+        };
+    </script>
 </body>
 </html>
