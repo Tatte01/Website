@@ -1,46 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- [HEAD CONTENT REMAINS EXACTLY THE SAME] -->
+    <!-- CSS -->
+        <link rel="stylesheet" href="/CSS/Header.css">
+        <link rel="stylesheet" href="/CSS/Footer.css">
+        <link rel="stylesheet" href="/CSS/Body.css">
+
+
+    <!-- Mobile Compatibility -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/images/Github.png">
+
+    <!-- Char set -->
+        <meta charset="UTF-8">
+
+    <!-- This is for the goatCounter site so it can track -->
+        <script data-goatcounter="https://tatte01.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <!-- Title for the site -->
+        <title>Malte Eriksson </title>
+
 </head>
-<body>
-    <!-- [HEADER CONTENT REMAINS EXACTLY THE SAME] -->
+    <body>
+        <header>
+                <a href="/HTML/index.html" class="logo active">Malte Eriksson</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="active">Home</a></li>
+                    <li><a href="/HTML/About.html">About</a></li>
+                    <li><a href="/HTML/Projekts.html">Projekts</a></li>
+                    <li><a href="/HTML/Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-        <section id="Index"></section>
-        <!-- REPLACE YOUR CURRENT COUNTER DIV WITH THIS -->
-        <div id="counter" style="font-style: italic; font-weight: bold;">
-            <!-- Primary Counter (hidden by default) -->
-            <span id="gc-real" style="display:none">
-                <goat-counter-show data-text="Total Visitors: {count}"></goat-counter-show>
-            </span>
-            
-            <!-- Fallback (visible by default) -->
-            <span id="gc-fallback">Loading visitors...</span>
-        </div>
-    </main>
+<!-- Index Page -->
+        <main>
+            <section id="Index">
+                <div>
+                    <h1>My Personal Website</h1>
+                    <h2>This is for Past, Current, and Future Project Archive</h2>
+                    <p>This page serves as a simple overview of projects I have done or am currently working on.</p>
+                    <p>Future ideas are included as a way to track and showcase my progress in my journey in Software Engineering.</p>
+                </div>
 
-    <p class="Version">Version 0.0.5</p>
-
-    <!-- KEEP YOUR EXISTING SCRIPTS -->
-    <script data-goatcounter="https://tatte01.goatcounter.com/count"
-            src="//gc.zgo.at/count.js"></script>
-    <script src="/Java-Script/VisitorCounter.js"></script>
-    
-    <!-- REPLACE YOUR FINAL FAILSAFE WITH THIS -->
-    <script>
-        setTimeout(() => {
-            const realCounter = document.querySelector('goat-counter-show');
-            if (realCounter && /\d+/.test(realCounter.textContent)) {
-                // Show real counter if it contains numbers
-                document.getElementById('gc-real').style.display = 'inline';
-                document.getElementById('gc-fallback').style.display = 'none';
-            } else {
-                // Show fallback
-                document.getElementById('gc-fallback').textContent = 'Total Visitors: 1K+';
-                console.log('GoatCounter display failed - showing fallback');
-            }
-        }, 3000);
-    </script>
-</body>
+                <div>
+                    <h1>Potension Future Road map</h1>
+                </div>
+                <!-- Footer -->
+                <div>
+                    <p class="Footer">Visitors Tracked || Version 0.0.5</p>
+                </div>
+            </section>
+        </main>
+    </body>
 </html>
