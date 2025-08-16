@@ -1,62 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malte Eriksson</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/images/Github.png">
-    <link rel="stylesheet" href="/CSS/Header.css">
-    <link rel="stylesheet" href="/CSS/Version.css">
-    <link rel="stylesheet" href="/CSS/Body.css">
+    <!-- [HEAD CONTENT REMAINS EXACTLY THE SAME] -->
 </head>
 <body>
-    <header>
-        <a href="/index.html" class="logo active">Malte Eriksson</a>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="/index.html" class="active">Home</a></li>
-                <li><a href="/HTML/About.html">About</a></li>
-                <li><a href="/HTML/Projekts.html">Projekts</a></li>
-                <li><a href="/HTML/Contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- [HEADER CONTENT REMAINS EXACTLY THE SAME] -->
 
     <main>
         <section id="Index"></section>
-        <!-- TRIPLE-LAYERED GUARANTEED COUNTER -->
+        <!-- REPLACE YOUR CURRENT COUNTER DIV WITH THIS -->
         <div id="counter" style="font-style: italic; font-weight: bold;">
-            <!-- Method 1: Standard JS Counter -->
-            <goat-counter-show data-text="Total Visitors: {count}"></goat-counter-show>
+            <!-- Primary Counter (hidden by default) -->
+            <span id="gc-real" style="display:none">
+                <goat-counter-show data-text="Total Visitors: {count}"></goat-counter-show>
+            </span>
             
-            <!-- Method 2: Image Fallback (No JS) -->
-            <noscript>
-                <img src="https://tatte01.goatcounter.com/count?p=/&t=Total%20Visitors:%20%7Bcount%7D" 
-                    style="height:0;width:0;" alt="">
-                Total Visitors: [Enable JS]
-            </noscript>
-            
-            <!-- Method 3: Hardcoded Fallback -->
-            <script>
-                document.write('<span id="gc-fallback">Loading...</span>');
-            </script>
+            <!-- Fallback (visible by default) -->
+            <span id="gc-fallback">Loading visitors...</span>
         </div>
     </main>
 
     <p class="Version">Version 0.0.5</p>
 
-    <!-- Load scripts at bottom -->
+    <!-- KEEP YOUR EXISTING SCRIPTS -->
     <script data-goatcounter="https://tatte01.goatcounter.com/count"
             src="//gc.zgo.at/count.js"></script>
     <script src="/Java-Script/VisitorCounter.js"></script>
     
-    <!-- Final failsafe -->
+    <!-- REPLACE YOUR FINAL FAILSAFE WITH THIS -->
     <script>
-        setTimeout(function() {
-            if (!document.querySelector('goat-counter-show').textContent.trim()) {
-                fetch('https://tatte01.goatcounter.com/count?p=/')
-                    .then(() => document.getElementById('gc-fallback').textContent = 'Total Visitors: Loaded')
-                    .catch(() => document.getElementById('gc-fallback').textContent = 'Total Visitors: 1K+');
+        setTimeout(() => {
+            const realCounter = document.querySelector('goat-counter-show');
+            if (realCounter && /\d+/.test(realCounter.textContent)) {
+                // Show real counter if it contains numbers
+                document.getElementById('gc-real').style.display = 'inline';
+                document.getElementById('gc-fallback').style.display = 'none';
+            } else {
+                // Show fallback
+                document.getElementById('gc-fallback').textContent = 'Total Visitors: 1K+';
+                console.log('GoatCounter display failed - showing fallback');
             }
         }, 3000);
     </script>
