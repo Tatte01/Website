@@ -1,42 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="/CSS/Header.css">
-<link rel="stylesheet" href="/CSS/Version.css">
-<link rel="stylesheet" href="/CSS/Body.css">
-<script data-goatcounter="https://tatte01.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-<script src="/Java-Script/VisitorCounter.js" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malte Eriksson </title>
+    <title>Malte Eriksson</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/Github.png">
+    <link rel="stylesheet" href="/CSS/Header.css">
+    <link rel="stylesheet" href="/CSS/Version.css">
+    <link rel="stylesheet" href="/CSS/Body.css">
+    
+    <!-- SINGLE GoatCounter Script (No Duplicates) -->
+    <script data-goatcounter="https://tatte01.goatcounter.com/count" 
+            src="//gc.zgo.at/count.js" async></script>
+
+    <!-- Debug Script - Fixed to work with your structure -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (window.goatcounter) {
+                    window.goatcounter.count({
+                        onload: function(data) {
+                            console.log("GoatCounter loaded! Current count:", data.count);
+                            // Update both the custom element and your div for redundancy
+                            const counterElement = document.querySelector("goat-counter-show");
+                            if (counterElement) {
+                                counterElement.textContent = `Total Visitors: ${data.count}`;
+                            }
+                            document.getElementById("counter").textContent = `Total Visitors: ${data.count}`;
+                        }
+                    });
+                } else {
+                    console.error("GoatCounter script failed to load!");
+                    // Fallback: Show static text if GoatCounter fails
+                    document.getElementById("counter").textContent = "Total Visitors: (Loading...)";
+                }
+            }, 2000);
+        });
+    </script>
 </head>
-    <body>
-        <header>
-                <a href="/HTML/index.html" class="logo active">Malte Eriksson</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/index.html" class="active">Home</a></li>
-                    <li><a href="/HTML/About.html">About</a></li>
-                    <li><a href="/HTML/Projekts.html">Projekts</a></li>
-                    <li><a href="/HTML/Contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            
-        </header>
+<body>
+    <header>
+        <a href="/HTML/index.html" class="logo active">Malte Eriksson</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/index.html" class="active">Home</a></li>
+                <li><a href="/HTML/About.html">About</a></li>
+                <li><a href="/HTML/Projekts.html">Projekts</a></li>
+                <li><a href="/HTML/Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-
-<main>
-    <section id="Index"></section>
-<!-- Index Page -->
-
+    <main>
+        <section id="Index"></section>
+        <!-- Counter Section -->
         <div id="counter" style="font-style: italic; font-weight: bold;">
             <goat-counter-show data-text="Total Visitors: {count}"></goat-counter-show>
         </div>
-        
-</main>
+    </main>
 
-        <p class="Version">Version 0.0.5</p>
-    </body>
+    <p class="Version">Version 0.0.5</p>
+    
+    <!-- Move VisitorCounter.js to end of body if not using defer -->
+    <script src="/Java-Script/VisitorCounter.js"></script>
+</body>
 </html>
