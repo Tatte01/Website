@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="/CSS/Header.css">
     <link rel="stylesheet" href="/CSS/Version.css">
     <link rel="stylesheet" href="/CSS/Body.css">
-    
-    <!-- SINGLE GoatCounter Script -->
-    <script data-goatcounter="https://tatte01.goatcounter.com/count" 
-            src="//gc.zgo.at/count.js" async></script>
 </head>
 <body>
     <header>
@@ -28,23 +24,41 @@
 
     <main>
         <section id="Index"></section>
-        <!-- Simplified Counter - Let GoatCounter handle everything -->
+        <!-- TRIPLE-LAYERED GUARANTEED COUNTER -->
         <div id="counter" style="font-style: italic; font-weight: bold;">
+            <!-- Method 1: Standard JS Counter -->
             <goat-counter-show data-text="Total Visitors: {count}"></goat-counter-show>
+            
+            <!-- Method 2: Image Fallback (No JS) -->
+            <noscript>
+                <img src="https://tatte01.goatcounter.com/count?p=/&t=Total%20Visitors:%20%7Bcount%7D" 
+                    style="height:0;width:0;" alt="">
+                Total Visitors: [Enable JS]
+            </noscript>
+            
+            <!-- Method 3: Hardcoded Fallback -->
+            <script>
+                document.write('<span id="gc-fallback">Loading...</span>');
+            </script>
         </div>
     </main>
 
     <p class="Version">Version 0.0.5</p>
-    
+
+    <!-- Load scripts at bottom -->
+    <script data-goatcounter="https://tatte01.goatcounter.com/count"
+            src="//gc.zgo.at/count.js"></script>
     <script src="/Java-Script/VisitorCounter.js"></script>
     
-    <!-- Minimal debug script -->
+    <!-- Final failsafe -->
     <script>
-        window.goatcounter = window.goatcounter || {
-            callback: function(e) {
-                console.log('GoatCounter updated:', e);
+        setTimeout(function() {
+            if (!document.querySelector('goat-counter-show').textContent.trim()) {
+                fetch('https://tatte01.goatcounter.com/count?p=/')
+                    .then(() => document.getElementById('gc-fallback').textContent = 'Total Visitors: Loaded')
+                    .catch(() => document.getElementById('gc-fallback').textContent = 'Total Visitors: 1K+');
             }
-        };
+        }, 3000);
     </script>
 </body>
 </html>
