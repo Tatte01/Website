@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/Projects.css">
+    <link rel="stylesheet" href="/CSS/modal.css">
+    <link rel="stylesheet" href="/CSS/Tags.css">
+    <link rel="HTML" href="/HTML2.0/Modal.html">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/Github.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Malte Eriksson</title>
+</head>
+<body>
+    <div class="landing">
+        <a href="/HTML2.0/Newlanding.html" class="Go_Back">← Click here to go back</a>
+        <div class="Title"> Product Portfolio </div>
+        <div class="Socials">
+            ✦<a href="discord://-/users/107178369551958016" class="links">Discord</a>
+            ✦<a href="" class="links">CV</a> 
+            ✦<a href="https://github.com/Tatte01" class="links">Github</a>
+        </div>
+
+
+        <nav class="Filter-tabs">
+            <button class="Tab-btn active" onclick="filterProjects('all')">All Projects</button>
+            <button class="Tab-btn" onclick="filterProjects('Finnished')">Finnished</button>
+            <button class="Tab-btn" onclick="filterProjects('In Progress')">In Progress</button>
+            <button class="Tab-btn" onclick="filterProjects('RIP')">RIP</button>
+        </nav>
+
+            <div class="No-projects" id="noProjects">
+                <p>📭 No projects in this category yet!</p>
+            </div>
+            <div class="Projects-list">
+
+            <div class="Cards" data-category="Finnished" onclick="openProject('dungeonBound')">
+                <img src="/images/game it self.png" class="Cards-img" alt="Logo">
+                <p class="Cards-Title">🎮 Dungeon Bound</p>
+                <p class="Cards-Progress"> Finished January 2025</p>
+                <p class="Cards-Progress">
+                    <span class="CPP">C++</span>
+                    <span class="SFML">SFML</span>
+                </p> 
+            </div>
+
+            <div id="dungeonBound" class="Project-modal">
+                <div class="Modal-content">
+                    <span class="Close-modal" onclick="closeProject('dungeonBound')"></span>
+                    
+                    <h1>🎮 Dungeon Bound</h1>
+                    
+                    
+                    <div class="Modal-details">
+                        <p><strong>Technology:</strong>
+                            <span class="CPP">C++</span>
+                            <span class="SFML">SFML</span>
+                        </p>
+                        
+                        <h2>About the Project</h2>
+                        <p>This game is a simple C++ game that the goal is to complete,the game as fast as possible.
+                            <br>In the game when you get in you can control the white cube and ment to jump up the platforms to reach the goal that is the black square.
+                            <br>The pink square is an enemy that resets the game if you collide with it.
+                            <br>The gold coins is time savers that reduces the total time at the end by a few secounds.
+                            <br>In the menu of the game you can click Score Board as you see in the first picture.
+                            <br>The Score Board shows from a text file the top 10 fastest times the game as been completed.</p>
+
+                            This game was made in a Course that was 10 weeks long and this was the End projekt and was made in Microsoft visual studio 2022 using C++ as the codeing language and SFML to make the graphics.
+                            <img src="/images/game it self.png" alt="Dungeon Bound gameplay" class="Modal-img">
+                        <img src="/images/Menu pic.png" alt="Dungeon Bound Score" class="Modal-img">
+                        <p><strong>Status:</strong> Finished January 2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Cards" data-category="Finnished" onclick="openProject('IncrementalDescension')">
+                <img src="/images/Incremental-pfp.png" class="Cards-img" alt="Logo">
+                <p class="Cards-Title">🎮 Incremental Descension</p>
+                <p class="Cards-Progress"> Finished August 2025</p>
+                <p class="Cards-Progress">
+                    <span class="JS">Java Script</span>
+                    <span class="HTML">HTML</span>
+                    <span class="CSS">CSS</span>
+                </p> 
+            </div>
+
+            <div id="IncrementalDescension" class="Project-modal">
+                <div class="Modal-content">
+                    <span class="Close-modal" onclick="closeProject('IncrementalDescension')">&times;</span>
+                    
+                    <h1>🎮 Incremental Descension</h1>
+                    
+                    <div class="Modal-details">
+                        <p><strong>Technology:</strong>
+                            <span class="JS">Java Script</span>
+                            <span class="HTML">HTML</span>
+                            <span class="CSS">CSS</span>
+                        </p>
+                        
+                        <h2>About the Project</h2>
+                        <p> Incremental Descension is a incremental idle game where you start as a humble miner clicking to extract precious resources. As you progress,
+                            strategically upgrade to automated drilling systems that generate income even while you're away!
+                        <br>
+                        <br>🏆 30 Achievements !
+                        <br>
+                        <br>⏰ Perfect for
+                            <br>Quick sessions (2-5 minutes)
+                            <br>Idle progression over 2-3 days to complete all content
+                            <br>Players who love satisfying progression and achievement hunting
+                        </p>
+                            
+                        <p><strong>Status:</strong> Finished August 2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Cards" data-category="Finnished" onclick="openProject('Hidden Gem')">
+                <img src="/images/LoginScreen.jpg" class="Cards-img" alt="Logo">
+                <p class="Cards-Title">🤝 Hidden Gem</p>
+                <p class="Cards-Progress"> Finished November 2025</p>
+                <p class="Cards-Progress">
+                    <span class="Flutter">Flutter</span>
+                    <span class="Dart">Dart</span>
+                </p>
+            </div>
+            
+            <div id="Hidden Gem" class="Project-modal">
+                <div class="Modal-content">
+                    <span class="Close-modal" onclick="closeProject('Hidden Gem')"></span>
+                    
+                    <h1>🤝 Hidden Gem</h1>
+                    
+                    <div class="Modal-details">
+                        <p><strong>Technology:</strong>
+                            <span class="Flutter">Flutter</span>
+                            <span class="Dart">Dart</span>
+                        </p>
+                        
+                        <h2>📚 Project Overview</h2>
+                        <p>
+                            School project during my 2nd year of university.
+                            <br>The app serves as a social platform for sharing and discovering personal "Gems" - special moments or memories.
+                        </p>
+                        <h2>✨ Key Features</h2>
+                        <p>
+                            <strong style="font-size: 1.3rem;">🔐 Authentication</strong><br>
+                            📧 Email & Password <br>
+                            🔵 Google Sign-In <br>
+                            🔄 Password reset via email <br>
+
+                            <br><strong style="font-size: 1.3rem;">💎 Gems Management (Full CRUD):</strong><br>
+                            Create new Gems with details and images <br>
+                            Read and browse your own and friends' Gems <br>
+                            Update and edit your existing Gems <br>
+                            Delete Gems you no longer want to share <br>
+
+                            <br><strong style="font-size: 1.3rem;">👤 Profile Management</strong><br>
+                            ✏️ Edit personal information <br>
+                            🖼️ Update profile pictures <br>
+
+                            <br><strong style="font-size: 1.3rem;">🤝 Social Features</strong> <br>
+                            👥 Add friends and build your network <br>
+                            ❤️ Like and show appreciation for others' Gems <br>
+                        </p>
+                        
+                        <img src="/images/MapScreen.jpg" alt="Dungeon Bound gameplay" class="Modal-img" style="max-width: 50%;">
+                        <p><strong>Status:</strong> Finished November 2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Cards" data-category="Finnished" onclick="openProject('Radix-Wizard')">
+                <img src="/images/Radix-Wizard.png" class="Cards-img" alt="Logo">
+                <p class="Cards-Title">🧙‍♂️ Radix Wizard</p>
+                <p class="Cards-Progress"> Finished December 2025</p>
+                <p class="Cards-Progress">
+                    <span class="JS">Java Script</span>
+                    <span class="HTML">HTML</span>
+                    <span class="CSS">CSS</span>
+                </p> 
+            </div>
+
+            <div id="Radix-Wizard" class="Project-modal">
+                <div class="Modal-content">
+                    <span class="Close-modal" onclick="closeProject('Radix-Wizard')"></span>
+                    
+                    <h1>🎮 Radix Wizard</h1>
+                    
+                    <div class="Modal-details">
+                        <p><strong>Technology:</strong>
+                            <span class="JS">Java Script</span>
+                            <span class="HTML">HTML</span>
+                            <span class="CSS">CSS</span>
+                        </p>
+                        
+                        <h2>About the Project</h2>
+                        <p>A magical number base converter that transforms numbers between decimal, binary,
+                            and hexadecimal systems with wizard-like precision!</p>
+                        <p><strong>Status:</strong> Finished December 2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Cards" data-category="In Progress" onclick="openProject('Bad-USB')">
+                <img src="/images/Badusb.png" class="Cards-img" alt="Logo">
+                <p class="Cards-Title"> 
+                <i class="fa-brands fa-usb" style="color: #4dabf7;"></i> Bad USB</p>
+
+                <p class="Cards-Progress">In-Progress</p>
+                <p class="Cards-Progress">
+                    <span class="Python">Python</span>
+                    <span class="PowerShell">PowerShell</span>
+                </p> 
+            </div>
+
+            <div id="Bad-USB" class="Project-modal">
+                <div class="Modal-content">
+                    <span class="Close-modal" onclick="closeProject('Bad-USB')"></span>
+                    
+                    <h1>🎮 Bad USB</h1>
+                    
+                    <div class="Modal-details">
+                        <p><strong>Technology:</strong>
+                            <span class="Python">Python</span>
+                            <span class="PowerShell">PowerShell</span>
+                        </p>
+                        
+                        <h2>About the Project</h2>
+                        <p>
+                            This is called a Bad USB online somewhat, but it's more about what you do with it.
+                            <br>You can make it do bad things, but I wanted to make a USB that installs all programs that I want on a new computer.
+                            <br>I do this using a small Python HID program that opens a PowerShell that executes a ps1 file with all the code that installs everything.
+                            <br>It's definitely possible to make in other ways, but I wanted to learn how to use HID with Python.
+                        </p>
+                        <p><strong>Status:</strong> In-Progress</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="/Java-Script/Projects.js"></script>
+</body>
+</html>

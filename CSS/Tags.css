@@ -1,0 +1,107 @@
+.CPP {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #00599C;
+    color: white;
+    border: 2px solid #00599C;
+    margin: 4px;
+}
+
+.SFML {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #8CC84B;
+    color: white;
+    border: 2px solid #8CC84B;
+    margin: 4px;
+}
+
+.JS {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #F7DF1E;
+    color: #000;
+    border: 2px solid #F7DF1E;
+    margin: 4px;
+}
+
+.HTML {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #E34F26;
+    color: white;
+    border: 2px solid #E34F26;
+    margin: 4px;
+}
+
+.CSS {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #1572B6;
+    color: white;
+    border: 2px solid #1572B6;
+    margin: 4px;
+}
+
+.Flutter {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #02569B;
+    color: white;
+    border: 2px solid #02569B;
+    margin: 4px;
+}
+
+.Dart {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #0175C2;
+    color: white;
+    border: 2px solid #0175C2;
+    margin: 4px;
+}
+
+.Python {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #3776AB;
+    color: white;
+    border: 2px solid #3776AB;
+    margin: 4px;
+}
+
+.PowerShell {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #012456;
+    color: white;
+    border: 2px solid #012456;
+    margin: 4px;
+}

@@ -1,0 +1,191 @@
+:root {
+    --background: #141414;
+    --foreground: #6b7280;
+    --details: #4dabf7;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);}
+
+.landing {
+    color: var(--foreground);
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+}
+
+.Title {
+    pointer-events: none;
+    /* Can't be clicked */
+    user-select: none;
+    /* But text can still be selected */
+    cursor: default;
+    /* Shows normal cursor */
+    /* border: solid 2px #4dabf7 ; */
+    min-height: 5vh;
+    font-size: 3rem;
+    max-width: 400px;
+    margin-left: 25px;
+}
+
+.Socials {
+    /* border: solid 2px #4dabf7 ; */
+    margin-left: 25px;
+    max-width: 400px;
+    font-size: 1.2rem;
+}
+
+.Go_Back {
+    margin-top: 25px;
+    margin-left: 25px;
+    text-decoration: none;
+    outline: none;
+    color: inherit; /* Keeps the default text color */
+    transition: color 0.2s ease; /* Smooth color transition */
+}
+
+.Go_Back:hover {
+    color: var(--details); /* Changes to your detail color on hover */
+}
+
+.Filter-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 25px;
+    flex-wrap: wrap;
+}
+
+.Tab-btn {
+    padding: 10px 20px;
+    border: 2px solid #374151;
+    background: transparent;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.Tab-btn:hover {
+    border-color: var(--detail);
+    background: rgba(77, 171, 247, 0.1);
+}
+
+.Tab-btn.active {
+    border-color: var(--detail);
+    background: var(--detail);
+    color: white;
+}
+
+.No-projects {
+    display: none; /* Hidden by default */
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 1.2rem;
+    color: #9ca3af;
+    min-height: 40vh;
+}
+
+.No-projects p {
+    margin: 0;
+}
+
+/* Hide cards that don't match filter */
+.Cards.hidden {
+    display: none;
+}
+
+.Projects {
+    pointer-events: none;
+    user-select: none;
+    cursor: default;
+    min-height: 10vh;
+    font-size: 3rem;
+    padding: 0 25px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+a.links {
+    font-size: 1.25rem;
+    text-decoration: underline solid var(--details);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    color: var(--foreground);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* border: #4dabf7 solid 2px; */
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    margin: 3px 10px 10px 3px;
+    padding: 3px 3px 3px 3px;
+}
+
+a.links:hover {
+    color: var(--details);
+}
+
+.Projects-list {
+    min-height: 80vh;
+    display: grid;
+    grid-template-columns: repeat(4,1fr); /* min 280px, max 350px */
+    gap: 20px;
+    padding: 25px;
+    max-width: 1600px;
+    margin: 0 auto;
+    justify-content: center; /* Centers the grid when there's extra space */
+}
+
+.Cards {
+    border: 1px solid #374151;
+    aspect-ratio: 1 / 1;
+    background: transparent;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    width: 100%; /* Takes full width of grid cell */
+}
+
+.Cards::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 40%;
+    margin-top: 60%;
+    background: linear-gradient(90deg, transparent, rgba(77, 171, 247, 0.1), transparent);
+    transition: left 0.2s ease;
+}
+
+.Cards:hover::before {
+    left: 100%;
+}
+
+.Cards:hover {
+    /* border-color: #4dabf7; */
+    background: rgba(77, 171, 247, 0.05);
+}
+
+.Cards-img {
+    /* border: #4dabf7 solid 2px; */
+    height: 60%;
+    min-width: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+}
+
+.Cards-Title {
+    margin-left: 5%;
+}
+
+.Cards-Progress {
+    margin-left: 5%;
+}
+
