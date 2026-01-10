@@ -1,29 +1,35 @@
-This is my own website that works as a poster board for my Software Enngiener projekts plans and arcives. But is also a projekt itself.
+# 🚀 Personal Website & Project Portfolio
 
-Made to work on HTML and CSS.
+A personal website serving as a portfolio for software engineering projects, documentation archive, and ongoing development showcase. This website is itself a project that demonstrates web development skills.
 
-You can accses the most uppdated Version at 
+🌐 **Live Website:** [https://malteeriksson.com](https://malteeriksson.com)
 
-https://malteeriksson.com
+## 📋 About This Project
 
-Read more on the about page on the website.
+This website functions as:
+- **Project Portfolio:** Showcase of software engineering projects and plans
 
+**Tech Stack:** Built with HTML and CSS for clean, semantic web standards and Javascript for some dynamic features.
 
-Versions 
-0.0.1
-- Just opened the website
+## 🎯 Features
 
-0.0.2
-- Added informasion to the Projekt and Contact page.
+- 📊 Project documentation and planning board
+- 📞 Contact information with enhanced icons
+- 📈 Visitor analytics via GoatCounter
+- 🎨 Clean, responsive design
 
-0.0.3
-- Fixed Better Icons the Contact page
+## 🛠️ Technologies Used
+- HTML5 - Semantic markup and structure
+- CSS3 - Styling and responsive design
+- JavaScript - For Dynamic features 
+- GoatCounter - Privacy-focused analytics
+- Git/GitHub - Version control and hosting
 
-0.0.4 
-- Added informasion in the About page
+## 🔮 Future Plans
+Continue adding project documentation
 
-0.0.5
-- Visitors Tracked Via GoatCounter. And cleaned up in the code.
+Enhance design and user experience
 
-0.0.6
-- Fixed Bugs & Updates about IncrementalDescension.
+Implement additional features as skills progress
+
+Regular updates and maintenance
