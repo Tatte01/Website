@@ -189,3 +189,7 @@ a.links:hover {
     margin-left: 5%;
 }
 
+.Links, .Links:link, .Links:visited, .Links:hover, .Links:active {
+    color: gray;
+    text-decoration: underline;
+}

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/CSS/Projects.css">
+<link rel="stylesheet"  href="/CSS/jellyfin.css">
+<title>Raspberry Pi 5 Jellyfin Server — Complete Setup Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">Complete Setup Guide</div>
+  <h1>Raspberry Pi 5<br>Jellyfin Media Server</h1>
+  <p>A full walkthrough from bare hardware to a remote-accessible home media server — every command, every step, every reason why.
+    <br>you can go back to the project side here: <a href="/HTML2.0/Projects.html" class="Links">Projects</a>
+  </p>
+  
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Major Steps</div></div>
+    <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Commands</div></div>
+    <div class="stat"><div class="stat-num">1.8TB</div><div class="stat-label">Media Storage</div></div>
+    <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Movies & Shows</div></div>
+  </div>
+</div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#hardware">Hardware</a>
+    <a href="#step1">1. OS & First Boot</a>
+    <a href="#step2">2. System Update</a>
+    <a href="#step3">3. Mount the SSD</a>
+    <a href="#step3" class="sub">Format drive</a>
+    <a href="#step3" class="sub">Auto-mount (fstab)</a>
+    <a href="#step4">4. Install Jellyfin</a>
+    <a href="#step5">5. Network Share</a>
+    <a href="#step6">6. Remote Access</a>
+    <a href="#step6" class="sub">Tailscale setup</a>
+    <a href="#step7">7. File Naming</a>
+    <a href="#troubleshoot">Troubleshooting</a>
+    <a href="#summary">Summary</a>
+    <a href="#code">Scripts or improvements</a>
+  </nav>
+
+  <main class="content">
+
+    <!-- HARDWARE -->
+    <section class="step-section" id="hardware">
+      <div class="step-header">
+        <div style="width:40px;height:40px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;">🖥️</div>
+        <div>
+          <div class="step-title">Hardware Overview</div>
+          <div class="step-subtitle">What was used in this build</div>
+        </div>
+      </div>
+      <div class="hardware-grid">
+        <div class="hw-card"><div class="hw-icon">🍓</div><div><div class="hw-name">Raspberry Pi 5</div><div class="hw-desc">Main compute unit</div></div></div>
+        <div class="hw-card"><div class="hw-icon">💾</div><div><div class="hw-name">2TB External HDD</div><div class="hw-desc">Media storage (2.5")</div></div></div>
+        <div class="hw-card"><div class="hw-icon">💿</div><div><div class="hw-name">microSD Card</div><div class="hw-desc">OS storage (115GB)</div></div></div>
+        <div class="hw-card"><div class="hw-icon">🌡️</div><div><div class="hw-name">Case with Fan</div><div class="hw-desc">Cooling solution</div></div></div>
+      </div>
+      <div class="info-box tip">
+        <div class="info-box-icon">💡</div>
+        <div class="info-box-content">A 2.5" USB-powered drive is ideal — it draws power directly from the Pi's USB port, requires no separate power supply, produces minimal heat, and is completely silent. Thats why i went with it.</div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- STEP 1 -->
+    <section class="step-section" id="step1">
+      <div class="step-header">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">OS Installation & First Boot</div>
+          <div class="step-subtitle">Flash Raspberry Pi OS to the microSD card</div>
+        </div>
+      </div>
+      <p class="explain">Raspberry Pi OS Lite(64-bit) was flashed to the microSD card using <strong>Raspberry Pi Imager</strong> on a Windows PC.
+        The Pi was then connected via <strong>Pi Connect</strong> for remote terminal access.</p>
+      <p class="explain">OS Lite boots straight into a terminal with no desktop, no windows, no mouse. Everything is done through text commands. It's lighter and faster because it's not running a graphical interface in the background, which means more of the Pi's power goes to Jellyfin instead of drawing a desktop nobody is using.</p>
+      <div class="info-box tip">
+        <div class="info-box-icon">✅</div>
+        <div class="info-box-content">Pi Connect allows you to access the Pi's terminal from any browser without needing a monitor or keyboard connected to the Pi.</div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- STEP 2 -->
+    <section class="step-section" id="step2">
+      <div class="step-header">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">System Update</div>
+          <div class="step-subtitle">Always update before installing anything</div>
+        </div>
+      </div>
+      <p class="explain">Ones you have connected in Pi connect the system package list and all installed packages must be updated. This ensures we're installing the latest, most compatible versions of everything.
+        <br>You can do that by pasting the command below into the terminal:
+      </p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo apt update
+sudo apt upgrade -y</div>
+      </div>
+      <div class="info-box tip">
+        <div class="info-box-icon">💡</div>
+        <div class="info-box-content"><strong>sudo</strong> = run as administrator. <br>
+        <strong>apt</strong> = the package manager on Debian/Raspberry Pi OS. <br>
+        <strong>-y</strong> = automatically answer "yes" to all prompts.</div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- STEP 3 -->
+    <section class="step-section" id="step3">
+      <div class="step-header">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Connect & Mount the Drive</div>
+          <div class="step-subtitle">Format, mount, and auto-mount on boot</div>
+        </div>
+      </div>
+
+      <h3>Find the drive</h3>
+      <p class="explain">After plugging in the external drive, this command lists all block devices (drives) so we can identify ours.</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">lsblk</div>
+      </div>
+      <p class="explain">The drive appeared as <code>sda</code> / <code>sda1</code> with 1.8TB — confirming the Pi detected it correctly.
+      <br>It's important to note that the physical drive is 2TB, however some storage is lost to formatting overhead, which is why it shows as 1.8TB. </p>
+
+      <h3>Format the drive</h3>
+      <div class="info-box danger">
+        <div class="info-box-icon">⚠️</div>
+        <div class="info-box-content">This erases everything on the drive. Only run this if you're sure you don't need any existing data.</div>
+      </div>
+      <p class="explain">The drive is going to be formatted as <strong>ext4</strong> — the standard Linux filesystem. It's faster and more reliable for a Linux server than NTFS (Windows format) or FAT32.</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo mkfs.ext4 /dev/sda1</div>
+      </div>
+
+      <h3>Create mount point & mount</h3>
+      <p class="explain">In Linux, drives don't appear as drive letters (like D:). Instead they are "mounted" to a folder. So we create <code>/mnt/media</code> as the folder where the drive will live.</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo mkdir /mnt/media  <br>sudo mount /dev/sda1 /mnt/media</div>
+      </div>
+
+      <p class="explain">Then if you want to make sure that your mounting worked you can run the following command:</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">df -h</div>
+      </div>
+
+      <p class="explain">You should see something like this — look for <code>/dev/sda1</code> mounted at <code>/mnt/media</code> with roughly 1.8TB available:</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">output</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">Filesystem      Size  Used Avail Use% Mounted on <br>/dev/sda1       1.8T  2.1M  1.7T   1% /mnt/media</div>
+      </div>
+      <p class="explain">If you can see <code>/mnt/media</code> in the list, the drive is mounted and ready to use!</p>
+
+      <h3>Get the drive's UUID</h3>
+      <p class="explain">Every drive has a unique ID (UUID). We need this to tell the Pi to auto-mount the right drive on boot — not just "whatever is in the USB port". Makes it behave more like a permanent hard drive.</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo blkid /dev/sda1</div>
+      </div>
+      <p class="explain">UUID looks something like: <code>623db798-5cca-413b-8df4-12c969db9673</code></p>
+
+      <h3>Edit fstab for auto-mount</h3>
+      <p class="explain"><strong>fstab</strong> is the file Linux reads on every boot to know which drives to mount and where. We added our drive so it mounts automatically every time the Pi starts.</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo nano /etc/fstab</div>
+      </div>
+      <p class="explain">Line added at the bottom of the file:</p>
+      <div class="info-box warning">
+        <div class="info-box-icon">⚠️</div>
+        <div class="info-box-content">You need to paste your own UUID</div>
+      </div>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">/etc/fstab entry</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">UUID=623db798-5cca-413b-8df4-12c969db9673  /mnt/media  ext4  defaults  0  2</div>
+      </div>
+      <p class="explain">Final fstab file should look like:</p>
+      <div class="cmd-block">
+  <div class="cmd-header"><span class="cmd-label">/etc/fstab</span><div class="cmd-dot"></div></div>
+  <div class="cmd-body">proc PARTUUID=914cfa12-01 /boot/firmware vfat defaults 0 2
+PARTUUID=914cfa12-02 / ext4 defaults,noatime 0 1
+UUID=623db798-5cca-413b-8df4-12c969db9673 /mnt/media ext4 defaults 0 2</div>
+  </div>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">verify auto-mount works</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo systemctl daemon-reload
+sudo mount -a</div>
+      </div>
+      <div class="info-box tip">
+        <div class="info-box-icon">✅</div>
+        <div class="info-box-content">No output = success. Linux is silent when things work correctly.</div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+   <!-- STEP 4 -->
+<section class="step-section" id="step4">
+  <div class="step-header">
+    <div class="step-num">04</div>
+    <div>
+      <div class="step-title">Install Jellyfin Media Server</div>
+      <div class="step-subtitle">Adding the Jellyfin repository and installing</div>
+    </div>
+  </div>
+  <p class="explain">Jellyfin has an official repository for Debian Trixie. We add the repository key, add the repo, then install Jellyfin.</p>
+  <div class="cmd-block">
+    <div class="cmd-header"><span class="cmd-label">add jellyfin repository</span><div class="cmd-dot"></div></div>
+    <div class="cmd-body">sudo apt install curl gnupg -y
+
+curl -fsSL https://repo.jellyfin.org/jellyfin_team.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/jellyfin.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/jellyfin.gpg] https://repo.jellyfin.org/debian trixie main" | sudo tee /etc/apt/sources.list.d/jellyfin.list</div>
+  </div>
+  <div class="cmd-block">
+    <div class="cmd-header"><span class="cmd-label">install jellyfin</span><div class="cmd-dot"></div></div>
+    <div class="cmd-body">sudo apt update
+sudo apt install jellyfin -y</div>
+  </div>
+  <div class="cmd-block">
+    <div class="cmd-header"><span class="cmd-label">enable & start jellyfin</span><div class="cmd-dot"></div></div>
+    <div class="cmd-body">sudo systemctl enable jellyfin
+sudo systemctl start jellyfin
+sudo systemctl status jellyfin</div>
+  </div>
+  <p class="explain">Jellyfin is confirmed running when status shows <strong>active (running)</strong>.</p>
+  <p class="explain">Jellyfin web UI is accessible at <code>http://[YOUR-PI-IP]:8096</code> — you can find your Pi's IP by running:</p>
+  <div class="cmd-block">
+    <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+    <div class="cmd-body">hostname -I</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+    <!-- STEP 5 -->
+    <section class="step-section" id="step5">
+      <div class="step-header">
+        <div class="step-num">05</div>
+        <div>
+          <div class="step-title">Set Up Network Share (Samba)</div>
+          <div class="step-subtitle">Access the media drive from Windows like a normal folder</div>
+        </div>
+      </div>
+      <p class="explain"><strong>Samba</strong> is a service that lets Linux share folders over the network using Windows-compatible file sharing. This allows you to drag and drop movies directly from your PC into the Pi's media drive.</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">install & configure samba</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo apt install samba -y
+
+sudo chown -R JellyfinServer:JellyfinServer /mnt/media
+sudo chmod -R 775 /mnt/media
+
+sudo nano /etc/samba/smb.conf</div>
+      </div>
+      <p class="explain">Added to the bottom of <code>/etc/samba/smb.conf</code>:</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">smb.conf entry</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">[Media]
+path = /mnt/media
+browseable = yes
+writeable = yes
+guest ok = yes
+force user = JellyfinServer</div>
+      </div>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">set samba password & restart</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo smbpasswd -a JellyfinServer
+sudo systemctl restart smbd</div>
+      </div>
+      <div class="info-box warning">
+        <div class="info-box-icon">⚠️</div>
+        <div class="info-box-content">Remember the password for the next step!</div>
+      </div>
+      <p class="explain">From Windows PC, access the share by typing in File Explorer's address bar:</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">windows file explorer</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">\\[YOUR-PI-IP]</div>
+      </div>
+      <p class="explain">Login with username <code>JellyfinServer</code> and the Samba password you set.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- STEP 6 -->
+    <section class="step-section" id="step6">
+      <div class="step-header">
+        <div class="step-num">06</div>
+        <div>
+          <div class="step-title">Remote Access via Tailscale</div>
+          <div class="step-subtitle">Watch your Jellyfin from anywhere in the world</div>
+        </div>
+      </div>
+      <p class="explain">The home network might have <strong>Double NAT</strong> issue (modem + personal router) which blocked standard port forwarding. <strong>Tailscale</strong> is used instead — it creates a secure private tunnel between devices without needing to open ports on your router.</p>
+
+      <h3>Why Tailscale?</h3>
+      <ul class="checklist">
+        <li><span class="check">✓</span> Works with Double NAT — no router config needed</li>
+        <li><span class="check">✓</span> Encrypted private tunnel between your devices</li>
+        <li><span class="check">✓</span> Free for personal use</li>
+        <li><span class="check">✓</span> Works on Windows, Mac, Android, iOS, Linux</li>
+      </ul>
+
+      <h3>Install Tailscale on the Pi</h3>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">install tailscale</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo apt install tailscale -y
+sudo tailscale up</div>
+      </div>
+      <p class="explain">Running <code>tailscale up</code> outputs a login URL. Open it in your browser and sign in with a free Tailscale account. The Pi then joins your private Tailscale network.</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">get tailscale ip</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">tailscale ip</div>
+      </div>
+      <p class="explain">Jellyfin is now accessible from anywhere using Tailscale at:</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">remote access url</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">http://[YOUR-TAILSCALE-IP]:8096</div>
+      </div>
+
+      <div class="info-box warning">
+        <div class="info-box-icon">⚠️</div>
+        <div class="info-box-content"><strong>Important:</strong> Tailscale must be installed and running on EVERY device that wants to access the server remotely. Each device connects individually. Once installed Tailscale runs silently in the background — no need to open it manually.</div>
+      </div>
+
+      <h3>Sharing with others</h3>
+      <p class="explain">To give someone else access, go to <code>https://login.tailscale.com</code>, find the Pi device, click <strong>Share</strong>, and enter their email. They install Tailscale, accept the invite, and can access your Jellyfin at the Tailscale IP.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- STEP 7 -->
+    <section class="step-section" id="step7">
+      <div class="step-header">
+        <div class="step-num">07</div>
+        <div>
+          <div class="step-title">File Naming & Organization</div>
+          <div class="step-subtitle">How to name files so Jellyfin recognizes them correctly</div>
+        </div>
+      </div>
+      <p class="explain">Jellyfin matches your files against its database to pull in posters, descriptions,
+        and ratings. It relies on the filename and folder structure to identify what it's looking at. Messy filenames cause misidentification.
+      Look at the potencial issues section below for examples of what to do if youy want a code to do it automatically.
+      </p>
+
+      <div class="file-tree">
+        <span class="dir">/mnt/media/</span><br>
+        ├── <span class="dir">Movies/</span><br>
+        │&nbsp;&nbsp;&nbsp;└── <span class="dir">Inception (2010)/</span><br>
+        │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="file">Inception (2010).mkv</span><br>
+        └── <span class="dir">Shows/</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;└── <span class="dir">Breaking Bad/</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="dir">Season 01/</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="file">Breaking Bad S01E01.mkv</span><br>
+      </div>
+
+      <h3>Rules</h3>
+      <table>
+        <tr><th>Type</th><th>Rule</th><th>Example</th></tr>
+        <tr><td>Movies</td><td>Movie in its own folder with year</td><td><code>Inception (2010)/Inception (2010).mkv</code></td></tr>
+        <tr><td>TV Shows</td><td>Show → Season folder → S01E01 naming</td><td><code>Breaking Bad/Season 01/Breaking Bad S01E01.mkv</code></td></tr>
+        <tr><td>❌ Avoid</td><td>Extra tags in filename</td><td><code>Movie.1080p.x265-GROUP[EZTVx].mkv</code></td></tr>
+      </table>
+      <div class="info-box danger">
+        <div class="info-box-icon">⚠️</div>
+        <div class="info-box-content">Extra text like <code>1080p.HEVC.x265-MeGusta[EZTVx.to]</code> in the filename confuses Jellyfin and causes it to misidentify seasons or episodes. Always rename to a clean format.</div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- TROUBLESHOOTING -->
+    <section class="step-section" id="troubleshoot">
+      <div class="step-header">
+        <div style="width:40px;height:40px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;">🔧</div>
+        <div>
+          <div class="step-title">Troubleshooting</div>
+          <div class="step-subtitle">Issues encountered and how they were fixed</div>
+        </div>
+      </div>
+
+      <h3>Drive won't unmount ("target is busy")</h3>
+      <p class="explain">Jellyfin or another process is holding the drive open. Stop Jellyfin first, then find and kill any remaining process using the drive.</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">fix</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo systemctl stop jellyfin
+sudo fuser -m /mnt/media        <span class="comment"># find PID using the drive</span>
+sudo kill -9 [PID]              <span class="comment"># kill that process</span>
+sudo umount /mnt/media</div>
+      </div>
+
+      <h3>Tailscale not reachable from outside</h3>
+      <p class="explain">Make sure you're testing from a device that also has Tailscale installed and connected. The 100.x.x.x IP only works between Tailscale devices. Also verify Jellyfin and Tailscale are both running.</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">check status</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo tailscale status
+sudo systemctl status jellyfin
+sudo systemctl status tailscaled</div>
+      </div>
+
+      <h3>Port forwarding blocked (Double NAT)</h3>
+      <p class="explain">If you have both a modem and a router, standard port forwarding won't work. Either call your ISP to enable bridge mode, or use Tailscale instead (recommended).</p>
+
+      <h3>Drive shows as sda instead of sda after reboot</h3>
+      <p class="explain">Sometimes after a reboot the drive gets assigned a different device name (sda instead of sda). This is fine since fstab uses the UUID not the device name — just remount manually if needed:</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">fix</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">sudo systemctl daemon-reload
+sudo mount -a
+sudo chown -R JellyfinServer:JellyfinServer /mnt/media
+sudo chmod -R 775 /mnt/media</div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SUMMARY -->
+    <section class="step-section" id="summary">
+      <div class="step-header">
+        <div style="width:40px;height:40px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;">🎉</div>
+        <div>
+          <div class="step-title">Final Setup Summary</div>
+          <div class="step-subtitle">Everything that was built</div>
+        </div>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-card"><div class="icon">🍓</div><div class="label">Server</div><div class="value">Raspberry Pi 5</div></div>
+        <div class="summary-card"><div class="icon">💾</div><div class="label">Media Storage</div><div class="value">1.8TB at /mnt/media</div></div>
+        <div class="summary-card"><div class="icon">🎬</div><div class="label">Media Server</div><div class="value">Jellyfin Media Server</div></div>
+        <div class="summary-card"><div class="icon">🌍</div><div class="label">Remote Access</div><div class="value">Tailscale VPN</div></div>
+        <div class="summary-card"><div class="icon">📁</div><div class="label">File Transfer</div><div class="value">Samba (\\[YOUR-PI-IP])</div></div>
+        <div class="summary-card"><div class="icon">🔒</div><div class="label">Local IP</div><div class="value">192.168.1.170</div></div>
+      </div>
+
+      <h3>Quick Reference — Important URLs</h3>
+      <table>
+        <tr><th>Purpose</th><th>URL / Address</th></tr>
+        <tr><td>Jellyfin (local network)</td><td><code>http://[YOUR-PI-IP]:8096</code></td></tr>
+        <tr><td>Jellyfin (via Tailscale)</td><td><code>http://[YOUR-TAILSCALE-IP]:8096</code></td></tr>
+        <tr><td>File transfer (Windows)</td><td><code>\\[YOUR-PI-IP]</code></td></tr>
+        <tr><td>Tailscale dashboard</td><td><code>https://login.tailscale.com</code></td></tr>
+      </table>
+
+      <ul class="checklist" style="margin-top:24px;">
+        <li><span class="check">✓</span> Raspberry Pi 5 running Raspberry Pi OS Lite (64-bit)</li>
+        <li><span class="check">✓</span> 2TB external drive formatted ext4, auto-mounted at /mnt/media</li>
+        <li><span class="check">✓</span> Jellyfin Media Server installed and running</li>
+        <li><span class="check">✓</span> Samba network share for easy file transfers from PC</li>
+        <li><span class="check">✓</span> Tailscale installed for secure remote access from anywhere</li>
+        <li><span class="check">✓</span> Proper file naming convention for Jellyfin library matching</li>
+      </ul>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="step-section" id="code">
+      <div class="step-header">
+        <div>
+          <div class="step-title">Scripts or improvements</div>
+        </div>
+      </div>
+      <p class="explain">While this setup is solid, there are a few potential issues to be aware of:</p>
+      <p class="explain">If you want to expand your storage in the future, 
+        you can connect additional hard drives to the Pi using a powered USB hub — one that plugs into the wall with its own power adapter. 
+        This is important because larger hard drives (especially 3.5 inch desktop drives) draw more power than the Pi can supply through its USB ports alone. 
+        A powered hub solves this by giving each drive its own power source.
+      </p>
+      <p class="explain">If you want your files to have names like "Show Name S01E01.mkv", you'll need to rename them manually or use a script.
+        And the seasons need to be in folders named "Season 01", "Season 02", etc. Otherwise Jellyfin will have trouble matching them to the correct show and season,
+        and you might end up with missing posters or metadata. You can run:
+      </p>
+      <p class="explain">Rename all episode files (run from the show folder on the Pi terminal):</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">for dir in /mnt/media/Shows/Your\ Show\ Name/*/; do
+          for file in "$dir"*.mkv; do
+              episode=$(echo "$file" | grep -oP 'S\d{2}E\d{2}')
+              newname="$(dirname "$file")/Your Show Name $episode.mkv"
+              mv "$file" "$newname"
+          done
+      done</div>
+      </div>
+
+      <p class="explain">Rename all season folders:</p>
+      <div class="cmd-block">
+        <div class="cmd-header"><span class="cmd-label">terminal</span><div class="cmd-dot"></div></div>
+        <div class="cmd-body">for dir in /mnt/media/Shows/Your\ Show\ Name/*/; do
+          season=$(echo "$dir" | grep -oP 'S\d{2}')
+          num=$(echo "$season" | grep -oP '\d{2}')
+          mv "$dir" "/mnt/media/Shows/Your Show Name/Season $num"
+          done
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  Raspberry Pi 5 Jellyfin Server — Setup Guide &nbsp;·&nbsp; Built with ❤️ &nbsp;·&nbsp; March 2026
+</footer>
+</body>
+</html>
