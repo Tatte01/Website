@@ -117,3 +117,48 @@
     border: 2px solid #008000;
     margin: 4px;
 }
+
+.React {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #61DAFB;
+    color: #000;
+    border: 2px solid #61DAFB;
+    margin: 4px;
+}
+.GitHub {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #181717;
+    color: white;
+    border: 2px solid #181717;
+    margin: 4px;
+}
+.Vite {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #646CFF;
+    color: white;
+    border: 2px solid #646CFF;
+    margin: 4px;
+}
+.Firebase {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #FFCA28;
+    color: #000;
+    border: 2px solid #FFCA28;
+    margin: 4px;
+}

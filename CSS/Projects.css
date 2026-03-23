@@ -193,3 +193,7 @@ a.links:hover {
     color: gray;
     text-decoration: underline;
 }
+
+li  {
+    margin-left: 40px;
+}
