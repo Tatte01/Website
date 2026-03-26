@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="landing">
-        <a href="/HTML2.0/Newlanding.html" class="Go_Back">← Click here to go back</a>
+        <a href="/index.html" class="Go_Back">← Click here to go back</a>
         <div class="Title"> Product Portfolio </div>
         <div class="Socials">
             ✦<a href="discord://-/users/107178369551958016" class="links">Discord</a>
@@ -21,263 +21,78 @@
             ✦<a href="https://github.com/Tatte01" class="links">Github</a>
         </div>
 
-
         <nav class="Filter-tabs">
             <button class="Tab-btn active" onclick="filterProjects('all')">All Projects</button>
             <button class="Tab-btn" onclick="filterProjects('Finnished')">Finnished</button>
             <button class="Tab-btn" onclick="filterProjects('In Progress')">In Progress</button>
             <button class="Tab-btn" onclick="filterProjects('RIP')">RIP</button>
+        </nav>    
+            
+        <nav class="Sorting-tabs">
+            <button class="Tab-btn" onclick="sortProjects('Newest')">Recently changed</button>
+            <button class="Tab-btn" onclick="sortProjects('Oldest')">Oldest</button>
         </nav>
-
-            <div class="No-projects" id="noProjects">
-                <p>📭 No projects in this category yet!</p>
-            </div>
-            <div class="Projects-list">
-
-            <div class="Cards" data-category="Finnished" onclick="openProject('dungeonBound')">
-                <img src="/images/game it self.png" class="Cards-img" alt="Logo">
-                <p class="Cards-Title">🎮 Dungeon Bound</p>
-                <p class="Cards-Progress"> Finished January 2025</p>
-                <p class="Cards-Progress">
+        <div class="No-projects" id="noProjects">
+            <p>📭 No projects in this category yet!</p>
+        </div>
+        <div class="card-container">
+            <div class="card" data-category="Finnished" data-date="2025-01-01" onclick="openProject('dungeonBound')">
+                <img src="/images/game it self.png" class="card-img" alt="Logo">
+                <p class="card-Title">🎮 Dungeon Bound</p>
+                <p class="card-Progress"> Finished January 2025</p>
+                <p class="Tecknologys">
                     <span class="CPP">C++</span>
                     <span class="SFML">SFML</span>
                 </p> 
             </div>
 
-            <div id="dungeonBound" class="Project-modal">
-                <div class="Modal-content">
-                    <span class="Close-modal" onclick="closeProject('dungeonBound')"></span>
-                    
-                    <h1>🎮 Dungeon Bound</h1>
-                    
-                    
-                    <div class="Modal-details">
-                        <p><strong>Technology:</strong>
-                            <span class="CPP">C++</span>
-                            <span class="SFML">SFML</span>
-                        </p>
-                        
-                        <h2>About the Project</h2>
-                        <p>This game is a simple C++ game that the goal is to complete,the game as fast as possible.
-                            <br>In the game when you get in you can control the white cube and ment to jump up the platforms to reach the goal that is the black square.
-                            <br>The pink square is an enemy that resets the game if you collide with it.
-                            <br>The gold coins is time savers that reduces the total time at the end by a few secounds.
-                            <br>In the menu of the game you can click Score Board as you see in the first picture.
-                            <br>The Score Board shows from a text file the top 10 fastest times the game as been completed.</p>
-
-                            This game was made in a Course that was 10 weeks long and this was the End projekt and was made in Microsoft visual studio 2022 using C++ as the codeing language and SFML to make the graphics.
-                            <img src="/images/game it self.png" alt="Dungeon Bound gameplay" class="Modal-img">
-                        <img src="/images/Menu pic.png" alt="Dungeon Bound Score" class="Modal-img">
-                        <a href="https://tatte01.itch.io/dungeon-bound-pre-alpha" class="Links">itch.io</a>
-                        <p><strong>Status:</strong> Finished January 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Cards" data-category="Finnished" onclick="openProject('IncrementalDescension')">
-                <img src="/images/Incremental-pfp.png" class="Cards-img" alt="Logo">
-                <p class="Cards-Title">🎮 Incremental Descension</p>
-                <p class="Cards-Progress"> Finished August 2025</p>
-                <p class="Cards-Progress">
+            <div class="card" data-category="Finnished" data-date="2025-08-01" onclick="openProject('IncrementalDescension')">
+                <img src="/images/Incremental-pfp.png" class="card-img" alt="Logo">
+                <p class="card-Title">🎮 Incremental Descension</p>
+                <p class="card-Progress"> Finished August 2025</p>
+                <p class="Tecknologys">
                     <span class="JS">Java Script</span>
                     <span class="HTML">HTML</span>
                     <span class="CSS">CSS</span>
                 </p> 
             </div>
 
-            <div id="IncrementalDescension" class="Project-modal">
-                <div class="Modal-content">
-                    <span class="Close-modal" onclick="closeProject('IncrementalDescension')">&times;</span>
-                    
-                    <h1>🎮 Incremental Descension</h1>
-                    
-                    <div class="Modal-details">
-                        <p><strong>Technology:</strong>
-                            <span class="JS">Java Script</span>
-                            <span class="HTML">HTML</span>
-                            <span class="CSS">CSS</span>
-                        </p>
-                        
-                        <h2>About the Project</h2>
-                        <p> Incremental Descension is a incremental idle game where you start as a humble miner clicking to extract precious resources. As you progress,
-                            strategically upgrade to automated drilling systems that generate income even while you're away!
-                        <br>
-                        <br>🏆 30 Achievements !
-                        <br>
-                        <br>⏰ Perfect for
-                            <br>Quick sessions (2-5 minutes)
-                            <br>Idle progression over 2-3 days to complete all content
-                            <br>Players who love satisfying progression and achievement hunting
-                        </p>
-                            
-                        <p><strong>Status:</strong> Finished August 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Cards" data-category="Finnished" onclick="openProject('Hidden Gem')">
-                <img src="/images/LoginScreen.jpg" class="Cards-img" alt="Logo">
-                <p class="Cards-Title">🤝 Hidden Gem</p>
-                <p class="Cards-Progress"> Finished November 2025</p>
-                <p class="Cards-Progress">
+            <div class="card" data-category="Finnished" data-date="2025-11-01" onclick="openProject('Hidden Gem')">
+                <img src="/images/LoginScreen.jpg" class="card-img" alt="Logo">
+                <p class="card-Title">🤝 Hidden Gem</p>
+                <p class="card-Progress"> Finished November 2025</p>
+                <p class="Tecknologys">
                     <span class="Flutter">Flutter</span>
                     <span class="Dart">Dart</span>
                 </p>
             </div>
-            
-            <div id="Hidden Gem" class="Project-modal">
-                <div class="Modal-content">
-                    <span class="Close-modal" onclick="closeProject('Hidden Gem')"></span>
-                    
-                    <h1>🤝 Hidden Gem</h1>
-                    
-                    <div class="Modal-details">
-                        <p><strong>Technology:</strong>
-                            <span class="Flutter">Flutter</span>
-                            <span class="Dart">Dart</span>
-                        </p>
-                        
-                        <h2>📚 Project Overview</h2>
-                        <p>
-                            School project during my 2nd year of university.
-                            <br>The app serves as a social platform for sharing and discovering personal "Gems" - special moments or memories.
-                        </p>
-                        <h2>✨ Key Features</h2>
-                        <p>
-                            <strong style="font-size: 1.3rem;">🔐 Authentication</strong><br>
-                            📧 Email & Password <br>
-                            🔵 Google Sign-In <br>
-                            🔄 Password reset via email <br>
-
-                            <br><strong style="font-size: 1.3rem;">💎 Gems Management (Full CRUD):</strong><br>
-                            Create new Gems with details and images <br>
-                            Read and browse your own and friends' Gems <br>
-                            Update and edit your existing Gems <br>
-                            Delete Gems you no longer want to share <br>
-
-                            <br><strong style="font-size: 1.3rem;">👤 Profile Management</strong><br>
-                            ✏️ Edit personal information <br>
-                            🖼️ Update profile pictures <br>
-
-                            <br><strong style="font-size: 1.3rem;">🤝 Social Features</strong> <br>
-                            👥 Add friends and build your network <br>
-                            ❤️ Like and show appreciation for others' Gems <br>
-                        </p>
-                        
-                        <img src="/images/MapScreen.jpg" alt="Dungeon Bound gameplay" class="Modal-img" style="max-width: 50%;">
-                        <p><strong>Status:</strong> Finished November 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Cards" data-category="Finnished" onclick="openProject('Radix-Wizard')">
-                <img src="/images/Radix-Wizard.png" class="Cards-img" alt="Logo">
-                <p class="Cards-Title">🧙‍♂️ Radix Wizard</p>
-                <p class="Cards-Progress"> Finished December 2025</p>
-                <p class="Cards-Progress">
+            <div class="card" data-category="Finnished" data-date="2025-12-01" onclick="openProject('Radix-Wizard')">
+                <img src="/images/Radix-Wizard.png" class="card-img" alt="Logo">
+                <p class="card-Title">🧙‍♂️ Radix Wizard</p>
+                <p class="card-Progress"> Finished December 2025</p>
+                <p class="Tecknologys">
                     <span class="JS">Java Script</span>
                     <span class="HTML">HTML</span>
                     <span class="CSS">CSS</span>
                 </p> 
             </div>
-
-            <div id="Radix-Wizard" class="Project-modal">
-                <div class="Modal-content">
-                    <span class="Close-modal" onclick="closeProject('Radix-Wizard')"></span>
-                    
-                    <h1>🎮 Radix Wizard</h1>
-                    
-                    <div class="Modal-details">
-                        <p><strong>Technology:</strong>
-                            <span class="JS">Java Script</span>
-                            <span class="HTML">HTML</span>
-                            <span class="CSS">CSS</span>
-                        </p>
-                        
-                        <h2>About the Project</h2>
-                        <p>A magical number base converter that transforms numbers between decimal, binary,
-                            and hexadecimal systems with wizard-like precision!</p>
-                        <p><strong>Status:</strong> Finished December 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Cards" data-category="RIP" onclick="openProject('Bad-USB')">
-                <img src="/images/Badusb.png" class="Cards-img" alt="Logo">
-                <p class="Cards-Title"> 
+            <div class="card" data-category="RIP" data-date="2025-10-01" onclick="openProject('Bad-USB')">
+                <img src="/images/Badusb.png" class="card-img" alt="Logo">
+                <p class="card-Title"> 
                 <i class="fa-brands fa-usb" style="color: #4dabf7;"></i> Bad USB</p>
 
-                <p class="Cards-Progress">RIP</p>
-                <p class="Cards-Progress">
+                <p class="card-Progress">RIP</p>
+                <p class="Tecknologys">
                     <span class="Python">Python</span>
                     <span class="PowerShell">PowerShell</span>
                 </p> 
             </div>
-
-            <div id="Bad-USB" class="Project-modal">
-                <div class="Modal-content">
-                    <span class="Close-modal" onclick="closeProject('Bad-USB')"></span>
-                    
-                    <h1>🎮 Bad USB</h1>
-                    
-                    <div class="Modal-details">
-                        <p><strong>Technology:</strong>
-                            <span class="Python">Python</span>
-                            <span class="PowerShell">PowerShell</span>
-                        </p>
-                        
-                        <h2>About the Project</h2>
-                        <p>
-                            This is called a Bad USB online somewhat, but it's more about what you do with it.
-                            <br>You can make it do bad things, but I wanted to make a USB that installs all programs that I want on a new computer.
-                            <br>I do this using a small Python HID program that opens a PowerShell that executes a ps1 file with all the code that installs everything.
-                            <br>It's definitely possible to make in other ways, but I wanted to learn how to use HID with Python.
-                        </p>
-                        <p><strong>Status:</strong> RIP</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Cards" data-category="Finnished" onclick="openProject('Jellyfin-Server')">
-                <img src="/images/Rasberry.jpg" class="Cards-img" alt="Logo">
-                <p class="Cards-Title"> 
-                <i class="fa-brands fa-raspberry-pi" style="color: #C7053D;"></i></i> PI 5 Jellyfin Media Server</p>
-
-                <p class="Cards-Progress">Finished March 2026</p>
-                <p class="Cards-Progress">
-                    <span class="Bash">Bash</span>
-                </p> 
-            </div>
-            <div id="Jellyfin-Server" class="Project-modal">
-                <div class="Modal-content">
-                    <span class="Close-modal" onclick="closeProject('Jellyfin-Server')"></span>
-                    
-                    <h1>🎬 Jellyfin Media Server</h1>
-                    
-                    <div class="Modal-details">
-                        <p><strong>Technology:</strong>
-                            <span class="Bash">Bash</span>
-                        </p>
-                        
-                        <h2>About the Project</h2>
-                        <p>
-                            A self-hosted media server built on a Raspberry Pi 5, running Jellyfin Media Server as a free and open source alternative to services like Netflix.
-                            The server streams movies and TV shows to any device at home or remotely anywhere in the world using Tailscale as a secure private tunnel.
-                            Media is stored on a 2TB external drive mounted to the Pi, and can be transferred wirelessly from any Windows PC using a Samba network share.
-                            The entire setup process is documented in a public HTML guide covering every step and command used.<br>
-                            And you can  read that guide here: <a href="/HTML2.0/jellyfin-server-guide.html" class="Links">Jellyfin Server Guide</a>
-                        </p>
-                        <p><strong>Status:</strong> Completed</p>
-                    </div>
-                </div>
-            </div>
-            <!-- CavaCavat  -->
-            <div class="Cards" data-category="Finnished" onclick="openProject('CavaCavat')">
-                <img src="/images/dog-paw.svg" class="Cards-img" alt="Logo">
-                <p class="Cards-Title"> 
+            <div class="card" data-category="In Progress" data-date="2025-06-01" onclick="openProject('CavaCavat')">
+                <img src="/images/dog-paw.svg" class="card-img" alt="Logo">
+                <p class="card-Title"> 
                 <i class="fa-solid fa-paw"></i> CavaCavat</p>
-                <p class="Cards-Progress">In Progress</p>
-                <p class="Cards-Progress">
+                <p class="card-Progress">In Progress</p>
+                <p class="Tecknologys">
                     <span class="React">React</span>
                     <span class="Firebase">Firebase</span>
                     <span class="Vite">Vite</span>
@@ -285,44 +100,248 @@
                 </p> 
             </div>
             
-            <div id="CavaCavat" class="Project-modal">
-                <div class="Modal-content">
-                    <span class="Close-modal" onclick="closeProject('CavaCavat')"></span>
-                    
-                    <h1>🐾CavaCavat</h1>
-                    
-                    <div class="Modal-details">
-                        <p><strong>Technology:</strong>
-                            <span class="React">React</span>
-                            <span class="Firebase">Firebase</span>
-                            <span class="Vite">Vite</span>
-                            <span class="GitHub">GitHub Pages</span>
-                        </p>
-                        
-                        <h2>About the Project</h2>
-                        <p>
-                            Designed and developed a full-stack web application for a 
-                            Cavalier King Charles Spaniel kennel in southern Sweden. 
-                            The application features a public-facing website with dog 
-                            family trees, a blog, and a photo gallery, alongside a 
-                            secure admin panel for content management.
+            <div class="card" data-category="Finnished" data-date="2026-03-01" onclick="openProject('Jellyfin-Server')">
+                <img src="/images/Rasberry.jpg" class="card-img" alt="Logo">
+                <p class="card-Title"> 
+                <i class="fa-brands fa-raspberry-pi" style="color: #C7053D;"></i></i> PI 5 Jellyfin Media Server</p>
 
-                            Key contributions:
-                                <li>Implemented Firebase Authentication for secure single-admin access</li>
-                                <li>Designed a NoSQL data model in Firestore for dog lineage tracking</li>
-                                <li>Built reusable React components with responsive design across 
-                                desktop, tablet and mobile</li>
-                                <li>Managed secure environment variables and deployment pipeline 
-                                via GitHub Pages</li>
-                                <li>Maintained technical documentation throughout development 
-                                using LaTeX in Overleaf</li>
-                        </p>
-                        <p><strong>Status:</strong> In Progress</p>
-                    </div>
+                <p class="card-Progress">Finished March 2026</p>
+                <p class="Tecknologys">
+                    <span class="Bash">Bash</span>
+                </p> 
+            </div>
+        </div>
+
+    <!-- Hidden Gem -->
+        <div id="Hidden Gem" class="Project-modal">
+            <div class="Modal-content">
+                <span class="Close-modal" onclick="closeProject('Hidden Gem')">&times;</span>
+                
+                <h1>🤝 Hidden Gem</h1>
+                <div class="Modal-details">
+                    <strong>Technology:</strong>
+                        <span class="Flutter">Flutter</span>
+                        <span class="Dart">Dart</span>
+                    
+                    <h2>📚 Project Overview</h2>
+                    <p>
+                        School project during my 2nd year of university.
+                        The app serves as a social platform for sharing and discovering personal "Gems" - special moments or memories.
+                    </p>
+                    <h2>✨ Key Features</h2>
+                        <h3>🔐 Authentication</h3>
+                        <ul>
+                            <li>📧 Email & Password</li>
+                            <li>🔵 Google Sign-In</li>
+                            <li>🔄 Password reset via email</li>
+                        </ul>
+
+                        <h3>💎 Gems Management (Full CRUD):</h3>
+                        <ul>
+                            <li>Create new Gems with details and images</li>
+                            <li>Read and browse your own and friends' Gems</li>
+                            <li>Update and edit your existing Gems</li>
+                            <li>Delete Gems you no longer want to share</li>
+                        </ul>
+
+                        <h3>👤 Profile Management</h3>
+                        <ul>
+                            <li>✏️ Edit personal information</li>
+                            <li>🖼️ Update profile pictures</li>
+                        </ul>
+
+                        <h3>🤝 Social Features</h3>
+                        <ul>
+                            <li>👥 Add friends and build your network</li>
+                            <li>❤️ Like and show appreciation for others' Gems </li>
+                        </ul>
+                    
+                    <img src="/images/MapScreen.jpg" alt="Dungeon Bound gameplay" class="Modal-img" style="max-width: 50%;">
+                    <p><strong>Status:</strong> Finished November 2025</p>
                 </div>
             </div>
         </div>
-    </div>
+    <!-- Dungeon Bound -->
+        <div id="dungeonBound" class="Project-modal">
+            <div class="Modal-content">
+                <span class="Close-modal" onclick="closeProject('dungeonBound')">&times;</span>
+                <h1>🎮 Dungeon Bound</h1>
+                <div class="Modal-details">
+                    <p>
+                        <strong>Technology:</strong>
+                        <span class="CPP">C++</span>
+                        <span class="SFML">SFML</span>
+                    </p>
+
+                    <h2>About the Project</h2>
+                    <p>A simple C++ game where the goal is to complete it as fast as possible.
+                        Control the white cube and jump up platforms to reach the goal — a black square.
+                    </p>
+
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li>The pink square is an enemy that resets the game on collision</li>
+                        <li>Gold coins reduce your total time by a few seconds</li>
+                        <li>The Score Board shows the top 10 fastest times from a text file</li>
+                    </ul>
+
+                    <p>Made during a 10-week course as the final project, built in Microsoft Visual Studio 2022
+                        using C++ and SFML for graphics.</p>
+
+                    <img src="/images/game it self.png" alt="Dungeon Bound gameplay" class="Modal-img">
+                    <img src="/images/Menu pic.png" alt="Dungeon Bound menu" class="Modal-img">
+
+                    <a href="https://tatte01.itch.io/dungeon-bound-pre-alpha" class="Links">itch.io</a>
+                    <p><strong>Status:</strong> Finished January 2025</p>
+                </div>
+            </div>
+        </div>
+
+    <!-- Incremental Descension -->
+        <div id="IncrementalDescension" class="Project-modal">
+            <div class="Modal-content">
+                <span class="Close-modal" onclick="closeProject('IncrementalDescension')">&times;</span>
+                <h1>🎮 Incremental Descension</h1>
+                <div class="Modal-details">
+                    <p>
+                        <strong>Technology:</strong>
+                        <span class="JS">JavaScript</span>
+                        <span class="HTML">HTML</span>
+                        <span class="CSS">CSS</span>
+                    </p>
+
+                    <h2>About the Project</h2>
+                    <p>An incremental idle game where you start as a humble miner clicking to extract
+                        precious resources. As you progress, strategically upgrade to automated drilling
+                        systems that generate income even while you're away!</p>
+
+                    <h3>Highlights:</h3>
+                    <ul>
+                        <li>🏆 30 Achievements</li>
+                        <li>Quick sessions of 2–5 minutes</li>
+                        <li>Idle progression over 2–3 days to complete all content</li>
+                        <li>Satisfying progression and achievement hunting</li>
+                    </ul>
+
+                    <p><strong>Status:</strong> Finished August 2025</p>
+                </div>
+            </div>
+        </div>
+
+    <!-- Radix Wizard -->
+        <div id="Radix-Wizard" class="Project-modal">
+            <div class="Modal-content">
+                <span class="Close-modal" onclick="closeProject('Radix-Wizard')">&times;</span>
+                <h1>🎮 Radix Wizard</h1>
+                <div class="Modal-details">
+                    <p>
+                        <strong>Technology:</strong>
+                        <span class="JS">JavaScript</span>
+                        <span class="HTML">HTML</span>
+                        <span class="CSS">CSS</span>
+                    </p>
+
+                    <h2>About the Project</h2>
+                    <p>A magical number base converter that transforms numbers between decimal, binary,
+                        and hexadecimal systems with wizard-like precision!</p>
+
+                    <p><strong>Status:</strong> Finished December 2025</p>
+                </div>
+            </div>
+        </div>
+
+    <!-- Bad USB -->
+        <div id="Bad-USB" class="Project-modal">
+            <div class="Modal-content">
+                <span class="Close-modal" onclick="closeProject('Bad-USB')">&times;</span>
+                <h1>🔌 Bad USB</h1>
+                <div class="Modal-details">
+                    <p>
+                        <strong>Technology:</strong>
+                        <span class="Python">Python</span>
+                        <span class="PowerShell">PowerShell</span>
+                    </p>
+
+                    <h2>About the Project</h2>
+                    <p>A USB that automatically installs all preferred programs on a new computer.
+                        Despite the name, this was built with a legitimate purpose — automating a
+                        personal setup routine.</p>
+
+                    <h2>How it works:</h2>
+                    <ul>
+                        <li>A small Python HID program opens a PowerShell terminal</li>
+                        <li>PowerShell executes a <code>.ps1</code> file that installs everything</li>
+                        <li>Built this way to learn how to use HID with Python</li>
+                    </ul>
+
+                    <p><strong>Status:</strong> RIP</p>
+                </div>
+            </div>
+        </div>
+
+    <!-- Jellyfin Server -->
+        <div id="Jellyfin-Server" class="Project-modal">
+            <div class="Modal-content">
+                <span class="Close-modal" onclick="closeProject('Jellyfin-Server')">&times;</span>
+                <h1>🎬 Jellyfin Media Server</h1>
+                <div class="Modal-details">
+                    <p>
+                        <strong>Technology:</strong>
+                        <span class="Bash">Bash</span>
+                    </p>
+
+                    <h2>About the Project</h2>
+                    <p>A self-hosted media server built on a Raspberry Pi 5, running Jellyfin as a
+                        free and open-source alternative to Netflix. Streams movies and TV shows to
+                        any device at home or remotely using Tailscale as a secure private tunnel.</p>
+
+                    <h2>Setup highlights:</h2>
+                    <ul>
+                        <li>2TB external drive mounted to the Pi for media storage</li>
+                        <li>Wireless file transfer from any Windows PC via Samba network share</li>
+                        <li>Full setup documented in a public HTML guide</li>
+                    </ul>
+
+                    <a href="/HTML2.0/jellyfin-server-guide.html" class="Links">Jellyfin Server Guide</a>
+                    <p><strong>Status:</strong> Completed</p>
+                </div>
+            </div>
+        </div>
+
+    <!-- CavaCavat -->
+        <div id="CavaCavat" class="Project-modal">
+            <div class="Modal-content">
+                <span class="Close-modal" onclick="closeProject('CavaCavat')">&times;</span>
+                <h1>🐾 CavaCavat</h1>
+                <div class="Modal-details">
+                    <p>
+                        <strong>Technology:</strong>
+                        <span class="React">React</span>
+                        <span class="Firebase">Firebase</span>
+                        <span class="Vite">Vite</span>
+                        <span class="GitHub">GitHub Pages</span>
+                    </p>
+
+                    <h2>About the Project</h2>
+                    <p>Designed and developed a full-stack web application for a Cavalier King Charles
+                        Spaniel kennel in southern Sweden. Features a public-facing website with dog
+                        family trees, a blog, and a photo gallery, alongside a secure admin panel for
+                        content management.</p>
+
+                    <strong>Key Contributions:</strong>
+                    <ul>
+                        <li>Implemented Firebase Authentication for secure single-admin access</li>
+                        <li>Designed a NoSQL data model in Firestore for dog lineage tracking</li>
+                        <li>Built reusable React components with responsive design across desktop, tablet and mobile</li>
+                        <li>Managed secure environment variables and deployment pipeline via GitHub Pages</li>
+                        <li>Maintained technical documentation throughout development using LaTeX in Overleaf</li>
+                    </ul>
+
+                    <p><strong>Status:</strong> In Progress</p>
+                </div>
+            </div>
+        </div>
+
     <script src="/Java-Script/Projects.js"></script>
 </body>
 </html>

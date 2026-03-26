@@ -31,7 +31,7 @@ document.addEventListener('keydown', function(event) {
 // Tabs
 function filterProjects(category) {
     // Get all cards and buttons
-    const cards = document.querySelectorAll('.Cards');
+    const cards = document.querySelectorAll('.card');
     const buttons = document.querySelectorAll('.Tab-btn');
     const noProjectsMsg = document.getElementById('noProjects');
     
@@ -90,3 +90,22 @@ document.addEventListener('keydown', function(event) {
         }
     }
 });
+
+function sortProjects(order) {
+    const container = document.querySelector('.card-container');
+    const cards = Array.from(document.querySelectorAll('.card'));
+
+    cards.sort((a, b) => {
+        const dateA = a.dataset.date;
+        const dateB = b.dataset.date;
+
+        if (order === 'Newest') {
+            return dateB.localeCompare(dateA);
+        } else {
+            return dateA.localeCompare(dateB);
+        }
+    });
+
+    // Re-append in sorted order
+    cards.forEach(card => container.appendChild(card));
+}

@@ -1,10 +1,10 @@
 :root {
     --background: #141414;
     --foreground: #6b7280;
-    --details:    #4dabf7;
+    --details: #4dabf7;
 }
 
-/* Modal styling */
+/* Modal overlay */
 .Project-modal {
     display: none;
     position: fixed;
@@ -14,42 +14,90 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    animation: fadeIn 0.3s ease;
     overflow-y: auto;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 100px 16px 40px 16px;
+    box-sizing: border-box;
 }
 
+/* Show modal — uses flex, not block */
 .Project-modal.active {
-    display: block;
+    display: flex;
+    animation: fadeIn 0.3s ease;
 }
 
+.card.hidden {
+    display: none;
+}
+/* Modal card */
 .Modal-content {
-    background-color: #1a1a1a;
-    margin: 50px auto;
-    padding: 40px;
-    border: 1px solid #374151;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 900px;
-    position: relative;
-    animation: slideIn 0.4s ease;
+    width: 100%;
+    max-width: 700px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 32px;
+    box-sizing: border-box;
+    animation: slideIn 0.3s ease;
+    position: relative;         /* needed for close button positioning */
 }
 
+/* Close button */
 .Close-modal {
-    color: #aaa;
     position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 35px;
-    font-weight: bold;
+    top: 16px;
+    right: 20px;
+    font-size: 28px;
+    color: var(--foreground);
     cursor: pointer;
+    line-height: 1;
     transition: color 0.2s ease;
 }
 
 .Close-modal:hover,
 .Close-modal:focus {
-    color: var(--detail);
+    color: var(--details);      /* fixed: was --detail */
 }
 
+/* Headings */
+.Modal-content h1 {
+    color: var(--details);      /* fixed: was --detail */
+    margin-top: 0;
+    padding-right: 40px;        /* stop title going behind close button */
+}
+
+.Modal-details h2 {
+    color: var(--details);      /* fixed: was --detail */
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.Modal-details h3 {
+    color: var(--details);      /* fixed: was --detail */
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Details section */
+.Modal-details {
+    margin-top: 30px;
+    line-height: 1.8;
+    color: var(--foreground);
+}
+
+.Modal-details p,
+.Modal-details ul {
+    color: var(--foreground);
+}
+
+.Modal-details ul {
+    padding-left: 20px;
+}
+
+.Modal-details li {
+    margin-bottom: 8px;
+}
+
+/* Image */
 .Modal-img {
     width: 100%;
     height: auto;
@@ -57,21 +105,42 @@
     margin: 20px 0;
 }
 
-.Modal-details {
-    margin-top: 30px;
-    line-height: 1.8;
+/* Tablet */
+@media (max-width: 768px) {
+    .Project-modal {
+        padding: 80px 12px 30px 12px;
+    }
+
+    .Modal-content {
+        padding: 24px;
+    }
 }
 
-.Modal-details h2 {
-    color: var(--detail);
-    margin-top: 30px;
-    margin-bottom: 15px;
+/* Mobile */
+@media (max-width: 480px) {
+    .Project-modal {
+        padding: 70px 8px 20px 8px;
+    }
+
+    .Modal-content {
+        padding: 16px;
+    }
+}
+
+/* Cards */
+.Cards {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.Cards:hover {
+    transform: translateY(-10px);
 }
 
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
-    to { opacity: 1; }
+    to   { opacity: 1; }
 }
 
 @keyframes slideIn {
@@ -83,14 +152,4 @@
         transform: translateY(0);
         opacity: 1;
     }
-}
-
-/* Make card clickable */
-.Cards {
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.Cards:hover {
-    transform: translateY(-10px);
 }
