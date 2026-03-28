@@ -4,69 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/ladningpage.css">
+    <link rel="stylesheet" href="/CSS/main.css">
     <link rel="shortcut icon" type="image/x-icon" href="/images/Github.png">
     <title>Malte Eriksson</title>
 </head>
 <body>
-    <div class="landing">
-        <div class="left-half">
+    <div class="landing-container">
+        <section class="first-row">
             <div class="Welcomelandingdiv">
-            <h1 id="Welcome-header" ></h1> 
+                <h1 id="Welcome-header" ></h1> 
             </div>
-            <div class="Textonlandingdiv">
-                <h2 id="Text-header" ></h2>
-            </div>
+                <div class="Textonlandingdiv">
+                    <h2 id="Text-header" ></h2>
+                </div>
             <a href="/HTML2.0/Projects.html" class="infolandingdiv">
                 <h3 id="info-header"></h3>
             </a>
-        </div>
-        <div class="Profile-Picture">
-                    <img src="/images/DSC_0585.jpeg" alt="PFP">
-                </div>
-        <div class="right-half">
-            <div>
-                <div class="TextTitle-infodiv">
-                    <h1>About Me</h1>
-                </div>
-                <div class="Text-infodiv">
-                    <table class="info-table">
-                        <tr>
-                            <td class="label">Name:</td>
-                            <td class="value">Malte Eriksson</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><hr></td>
-                        </tr>
-                        <tr>
-                            <td class="label">Age:</td>
-                            <td class="value">24</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><hr></td>
-                        </tr>
-                        <tr>
-                            <td class="label">Email:</td>
-                            <td class="value">Malte-Eriksson@hotmail.com</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><hr></td>
-                        </tr>
-                        <tr>
-                            <td class="label">Work:</td>
-                            <td class="value">Student</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><hr></td>
-                        </tr>
-                        <tr>
-                            <td class="label">Degree:</td>
-                            <td class="value">Bachelor's in Software Engineering</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <h1>Tatte01</h1>
-    <script src="/Java-Script/LandingPage.js"></script>
+        </section>
+        
+        <section class="secound-row">
+            <figure class="Profile-Picture">
+                <img src="/images/DSC_0585.jpeg" alt="PFP">
+                <figcaption>Tatte 01</figcaption>
+            </figure>
+        </section>
+
+        <section class="Third-row">
+            <h1 class="info-title">About Me</h1>
+
+            <dl class="info-list">
+                <dt>Name</dt>
+                <dd>Malte Eriksson</dd>
+
+                <dt>Age</dt>
+                <dd>24</dd>
+
+                <dt>Email</dt>
+                <dd>
+                    <a href="mailto:Malte-Eriksson@hotmail.com">
+                        Malte-Eriksson@hotmail.com
+                    </a>
+                </dd>
+
+                <dt>Work</dt>
+                <dd>Student</dd>
+
+                <dt>Degree</dt>
+                <dd>Bachelor's in Software Engineering</dd>
+            </dl>
+        </section>
+    </div>
+<script src="/Java-Script/LandingPage.js"></script>
 </body>
 </html>

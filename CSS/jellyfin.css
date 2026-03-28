@@ -1,18 +1,4 @@
- :root {
-    --bg: #0a0e1a;
-    --surface: #111827;
-    --surface2: #1a2235;
-    --border: #1e2d45;
-    --accent: #e8a020;
-    --accent2: #3b82f6;
-    --accent3: #10b981;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --code-bg: #0d1117;
-    --red: #ef4444;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     background: var(--bg);

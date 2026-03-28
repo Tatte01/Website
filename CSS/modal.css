@@ -1,9 +1,3 @@
-:root {
-    --background: #141414;
-    --foreground: #6b7280;
-    --details: #4dabf7;
-}
-
 /* Modal overlay */
 .Project-modal {
     display: none;
